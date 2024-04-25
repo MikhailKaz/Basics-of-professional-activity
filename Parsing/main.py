@@ -8,9 +8,14 @@ def parse():
     soup = BeautifulSoup(page.text, "html.parser") # передаем страницу в bs4
 
     block = soup.findAll('span', class_='price') # находим  контейнер с нужным классом
-    for data in block: # проходим циклом по содержимому контейнера
-        price = data.span.bdi.string
+    prices = []
+    for data in block:
+        price = int(''.join(filter(lambda x: x.isalnum(), data.get_text())))
+        prices.append(price)
         print(price)
+    print(f"Mean: ", sum(prices) / len(prices))
+    print(f"Max: ", max(prices))
+    print(f"Min: ", min(prices))
 
 if __name__ == '__main__':
     parse()
