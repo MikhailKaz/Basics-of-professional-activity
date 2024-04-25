@@ -1,1 +1,1 @@
-![Result](/images/image.jpg)
+![Result](images/image.jpg)
